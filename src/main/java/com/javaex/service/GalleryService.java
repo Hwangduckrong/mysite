@@ -10,18 +10,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.javaex.dao.AttachDao;
 import com.javaex.dao.GalleryDao;
 import com.javaex.vo.AttachVo;
+import com.javaex.vo.GalleryVo;
 
 @Service
-public class AttachService {
+public class GalleryService {
 
 	@Autowired
-	private AttachDao attachDao;
+	private GalleryDao galleryDao;
 
-	public String upload(MultipartFile file) {
-		System.out.println("AttachService.upload");
+	// 사진 업로드
+	public String pictureUpload(MultipartFile file) {
+		System.out.println("GalleryService.upload");
 		// 사진에 기본정보로 우리가 관리할 정보를 뽑아내야한다-->db저장
 
 		// 파일 저장 폴더
@@ -45,12 +46,12 @@ public class AttachService {
 
 		// (1)DB저장
 		// (1-1) 데이터 묶기
-		AttachVo attachVo = new AttachVo(orgName, saveName, filePath, fileSize);
-		System.out.println(attachVo);
+		GalleryVo galleryVo = new GalleryVo(filePath, orgName,saveName, fileSize);
+		System.out.println(galleryVo);
 		System.out.println("과제:DB저장 중");
 
 		// (1-2) dao 통해서 db에 저장
-		int count = attachDao.Attachinsert(attachVo);
+		int count = galleryDao.pictureinsert(galleryVo);
 
 		// (2)사진을 서버(강남)에 하드디스크에 복사해야한다
 		// 파일 저장
@@ -70,7 +71,16 @@ public class AttachService {
 			return saveName;
 		} else
 			return null;
-		
-		}
-	
+
 	}
+
+	// 사진 목록
+	public List<GalleryVo> exeupload() {
+		System.out.println("Gallery.exeupload");
+
+		List<GalleryVo>  galleryList = galleryDao.galleryload();
+
+		return  galleryList;
+
+	}
+}

@@ -11,10 +11,21 @@
 	 values(#{orgName}, #{saveName}, #{filePath}, #{fileSize})
 	
 ]]>
-
-
 </insert>
 
+
+<insert id="insert"  parameterType="com.javaex.vo.GalleryVo">
+<![CDATA[
+
+	insert into gallery (orgName, saveName, filePath, fileSize)
+	 values(#{orgName}, #{saveName}, #{filePath}, #{fileSize})
+	
+]]>
+</insert>
+
+<select id="selectList" parameterType="com.javaex.vo.AttachVo" resultType="com.javaex.vo.AttachVo">>
+
+</select>
 
 
 

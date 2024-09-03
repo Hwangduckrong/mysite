@@ -1,5 +1,7 @@
 package com.javaex.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.AttachService;
+import com.javaex.vo.AttachVo;
 
 @Controller
 public class AttachController {
@@ -37,5 +40,5 @@ public class AttachController {
       model.addAttribute("saveName",saveName);
       return "/attach/result";
    }
-
+  
 }
