@@ -28,5 +28,17 @@ public class UserService {
 		return authUser;
 		
 	}
+	/*아이디체크*/
+	public boolean exeIdCheck(String id) {
+		System.out.println("UserService.idCheck()");
+		
+		int count =userDao.SelectUserById(id);
+		if(count==1) {
+			return false;
+		}else {
+			return true;
+		}
+		
+	}
 	
 }

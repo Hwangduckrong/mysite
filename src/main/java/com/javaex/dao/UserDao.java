@@ -27,5 +27,13 @@ public class UserDao {
 		UserVo authUser = sqlSession.selectOne("user.selectByIdPw", userVo);
 		return authUser;
 	}
+	//id로 데이터 가져오기-id 사용여부체크할때 사용
+	
+	public int SelectUserById(String id) {
+		System.out.println("UserDao.SelectUserById");
+		int count=sqlSession.selectOne("user.selectById",id );
+		System.out.println(count);
+		return count;
+	}
 	
 }

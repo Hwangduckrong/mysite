@@ -273,7 +273,7 @@ function addRender(event){
 		    
 		  if(response.data ==1){
 			  
-			  let delId ='#T-'+ no;
+			  let delId ='#t-'+ no;
 			  console.log(delId);
 			  let removetable=document.querySelector(delID)
 			  removetable.remove();

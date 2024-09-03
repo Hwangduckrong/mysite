@@ -30,27 +30,24 @@ public class GuestbookService {
 		int count = guestbookDao.guestbookInsert(guestbookVo);
 		return count;
 	}
-
-	// 삭제
-	public int exeRemove(GuestbookVo guestbookVo) {
-		System.out.println("GuestbookService.exeRemove()");
-
-		int count = guestbookDao.guestbookDelete(guestbookVo);
-		return count;
-	}
-
-	//ajax등록  저장
+	//ajax 등록 이후 저장(비즈니스 로직)
 	public GuestbookVo exeAddandGuest(GuestbookVo guestbookVo) {
-		System.out.println("GuestbookService.exeAddandGuest()");
-		////////////////비즈니스 로직////////////
+		System.out.println("GuestbookService.exeAddandGuest");
+		/////////비즈니스 로직//////
 		//저장
-		guestbookDao.insertSelectKey(guestbookVo);
+		int count =guestbookDao.insertSelectKey(guestbookVo);
+		//1명의 데이터만 가져오기
+		GuestbookVo gVo=guestbookDao.guestbookSelectOne(guestbookVo.getNo());
 		
-		//1명데이터 데이터 가져오기
-		GuestbookVo gVo= guestbookDao.guestbookSelectOne(guestbookVo.getNo());
 		
-		return gVo;
+		return guestbookVo;
 	}
-	
+	// 삭제
+		public int exeRemove(GuestbookVo guestbookVo) {
+			System.out.println("GuestbookService.exeRemove()");
+
+			int count = guestbookDao.guestbookDelete(guestbookVo);
+			return count;
+		}
 
 }
