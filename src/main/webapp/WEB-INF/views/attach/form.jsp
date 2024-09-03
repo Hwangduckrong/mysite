@@ -72,14 +72,18 @@
 
 				<div id="file">
 					<form action="${pageContext.request.contextPath}/attach/upload" method="post" enctype="multipart/form-data">
-						<table>
+						<table>														<!-- 작동방식이 다르니 반드시 포스트로 해놔라 -->
 							<colgroup>
 								<col style="width: 600px;">
 								<col style="width: 220px;">
 							</colgroup>
 							<tr>
-								<td class="text-left"><input type="file" name="file"></td>
-								<td class="text-right"><button type="submit">파일업로드</button></td>
+								<td class="text-left">
+								<input type="file" name="file">
+								</td>
+								<td class="text-right">
+								<button type="submit">파일업로드</button>
+								</td>
 							</tr>
 						</table>
 					</form>
