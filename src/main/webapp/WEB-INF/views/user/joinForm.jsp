@@ -83,9 +83,10 @@
 
 							<!-- 아이디 -->
 							<div class="form-group">
-								<label class="form-text" for="input-uid">아이디</label> <input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요">
+								<label  class="form-text" for="input-uid">아이디</label> <input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요">
 								<button type="button" id="btnIdCheck">중복체크</button>
 							</div>
+							<div id = "message"></div>
 
 							<!-- 비밀번호 -->
 							<div class="form-group">
@@ -150,6 +151,20 @@
                 responseType: 'json'
             }).then(function (response) {
                 console.log(response.data);
+                
+                let can=response.data;
+                let messageTag =document.querySelector('#message');
+                
+                //그리기
+                if(can==true){
+                 messageTag.textContent="사용할 수 있는 아이디 입니다"
+                 messageTag.style.color="#0000ff"
+                }else{
+                 messageTag.textContent="다른 아이디를 사용해주세요"
+                 messageTag.style.color="#ff0000"
+                }
+               
+                
             }).catch(function (error) {
                 console.log(error);
             });
