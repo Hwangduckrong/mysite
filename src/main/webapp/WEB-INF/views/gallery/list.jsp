@@ -69,8 +69,6 @@
 				</div>
 				<!-- //content-head -->
 
-				<div id="file">
-					<form action="${pageContext.request.contextPath}/attach/upload" method="post" enctype="multipart/form-data">
 						<table>														<!-- 작동방식이 다르니 반드시 포스트로 해놔라 -->
 							<colgroup>
 								<col style="width: 600px;">
@@ -144,8 +142,7 @@
 										</div>
 									</li>
 									<!-- 이미지반복영역 -->
-									</form>
-
+									
 								</ul>
 							</div>
 							<!-- //list -->
