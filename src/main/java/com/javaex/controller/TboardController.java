@@ -37,7 +37,7 @@ public class TboardController {
 		Map<String, Object> pMap = tboardService.exeList2(crtPage);
 		System.out.println(pMap);
 
-		// model.addAttribute("tboardList", tboardList);
+		model.addAttribute("pMap", pMap);
 		return "tboard/list2";
 	}
 

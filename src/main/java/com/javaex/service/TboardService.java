@@ -31,6 +31,16 @@ public class TboardService {
 		//////////////////////////////////////////////////
 		//한페이지의 출력갯수
 		int listCnt = 10;  
+		//현재페이지 음수일때 계산 3항연산자
+		
+		crtPage =(crtPage>0) ? crtPage : (crtPage=1);
+		
+		/*
+		if(crtPage<0) {
+			crtPage = 1;
+		}else {
+			crtPage=crtPage;
+		}*/
 		
 		// startRowNo 구하기
 		// 1->(1 10)  2->(11 10)  3->(21 10) 사람
@@ -94,6 +104,10 @@ public class TboardService {
 		boolean next = false;
 		if(listCnt * endPageBtnNo < totalCnt) {  //한페이지당 글갯수(10) * 마지막버튼번호(19) < 전체글개수(187)
 			next = true;
+		}else {
+			//다음화살표가 false 일때 마지막 숫자버튼이 갯수를 정확히 계산
+			//187->19page 187/10 = 18.7 올림 처리해서 19page로 계산중
+			endPageBtnNo=(int)Math.ceil(totalCnt/(double)listCnt);
 		}
 		
 		//이전 화살표 유무
